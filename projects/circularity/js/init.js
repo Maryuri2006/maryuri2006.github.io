@@ -20,13 +20,19 @@ var init = function (window) {
         ////////////////////////////////////////////////////////////
         
         // TODO 1 : Declare and initialize our variables
-
+        var circle; // variable to hold a single circle when creating circles / iterating
+        var circles = []; // variable to store all circles in an array
 
         // TODO 2 : Create a function that draws a circle 
-        
+        function drawCircle(){
+        circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
+        physikz.addRandomVelocity(circle, canvas, 5, 5);
+        view.addChild(circle);
+        circles.push(circle);
+        }
 
         // TODO 3 / 7 : Call the drawCircle() function 
-
+        functiondrawCircle();
 
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
@@ -39,13 +45,24 @@ var init = function (window) {
         */
         function update() {
             // TODO 4 : Update the circle's position //
-
-            
+            circles[5];
+            physikz.updatePosition(/* bracket notation to access the first circle */);
+            physikz.updatePosition(/* bracket notation to access the second circle */);
+            physikz.updatePosition(/* bracket notation to access the third circle */);
+            physikz.updatePosition(/* bracket notation to access the fourth circle */);
+            physikz.updatePosition(/* bracket notation to access the fifth circle */);
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-           
+            game.checkCirclePosition(/* bracket notation to access the first circle */);
+            game.checkCirclePosition(/* bracket notation to access the second circle */);
+            game.checkCirclePosition(/* bracket notation to access the third circle */);
+            game.checkCirclePosition(/* bracket notation to access the fourth circle */);
+            game.checkCirclePosition(/* bracket notation to access the fifth circle */);
 
             // TODO 9 : Iterate over the array
-           
+            for (var i = 0; i < circles.length; i++) {
+                physikz.updatePosition(circles[i]);
+                game.checkCirclePosition(circles[i]);
+            }
             
         }
     
@@ -62,7 +79,17 @@ var init = function (window) {
             }
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-            
+            if (circle.x < 0) {
+                circle.x = canvas.width;
+            }
+
+            if (circle.y > canvas.height) {
+                circle.y = 0;
+            }
+
+            if (circle.y < 0) {
+                circle.y = canvas.height;
+            }
 
 
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
@@ -89,4 +116,5 @@ if((typeof process !== 'undefined') &&
     (typeof process.versions.node !== 'undefined')) {
     // here, export any references you need for tests //
     module.exports = init;
+}
 }
