@@ -32,7 +32,11 @@ var init = function (window) {
         }
 
         // TODO 3 / 7 : Call the drawCircle() function 
-        functiondrawCircle();
+        var counter = 0;
+        while (counter < 100) {
+            drawCircle();
+            counter++;
+        }
 
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
@@ -45,12 +49,16 @@ var init = function (window) {
         */
         function update() {
             // TODO 4 : Update the circle's position //
-            circles[5];
+            for (var i = 0; i < circles.length; i++){
+                var eachCircle = circles[i];
+            }
             physikz.updatePosition(/* bracket notation to access the first circle */);
             physikz.updatePosition(/* bracket notation to access the second circle */);
             physikz.updatePosition(/* bracket notation to access the third circle */);
             physikz.updatePosition(/* bracket notation to access the fourth circle */);
             physikz.updatePosition(/* bracket notation to access the fifth circle */);
+
+
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
             game.checkCirclePosition(/* bracket notation to access the first circle */);
             game.checkCirclePosition(/* bracket notation to access the second circle */);
@@ -116,5 +124,4 @@ if((typeof process !== 'undefined') &&
     (typeof process.versions.node !== 'undefined')) {
     // here, export any references you need for tests //
     module.exports = init;
-}
 }
